@@ -22,7 +22,16 @@ const STOP_WORDS = new Set([
   "to", "from", "up", "down", "in", "out", "on", "off", "over", "under",
   "again", "further", "then", "once", "here", "there", "if", "or", "and",
   "but", "nor", "for", "at", "by", "with", "about", "between", "of",
-  "also", "any", "s", "t", "d", "o", "e", "p",
+  "also", "any",
+]);
+
+/**
+ * LAMMPS-specific single-character tokens that should be preserved.
+ * These are meaningful variable names or short identifiers in LAMMPS.
+ */
+const LAMMPS_KEEP_SHORT = new Set([
+  "x", "y", "z", "v", "f", "q", "r", "n", "p", "t", "e",
+  "lj", "sw", "npt", "nvt", "nve", "nph",
 ]);
 
 /**
@@ -35,12 +44,16 @@ export function tokenize(text: string): string[] {
 
   const tokens: string[] = [];
   for (const token of rawTokens) {
-    if (STOP_WORDS.has(token) || token.length <= 1) continue;
-    tokens.push(token);
+    // Strip trailing punctuation (periods, commas, etc.) to avoid vocabulary bloat
+    const cleaned = token.replace(/[.,;:!?)]+$/, "");
+    if (!cleaned || STOP_WORDS.has(cleaned)) continue;
+    // Keep single-char tokens only if they are LAMMPS-significant
+    if (cleaned.length <= 1 && !LAMMPS_KEEP_SHORT.has(cleaned)) continue;
+    tokens.push(cleaned);
 
     // Also add sub-tokens for compound terms like "pair_style" -> "pair", "style"
-    if (token.includes("_") || token.includes("/")) {
-      const parts = token.split(/[_/]/);
+    if (cleaned.includes("_") || cleaned.includes("/")) {
+      const parts = cleaned.split(/[_/]/);
       for (const part of parts) {
         if (part.length > 1 && !STOP_WORDS.has(part)) {
           tokens.push(part);

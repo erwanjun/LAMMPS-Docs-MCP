@@ -1,24 +1,57 @@
 {
-  "name": "lammps-mcp-server",
+  "name": "lammps-docs-mcp",
   "version": "1.0.0",
   "description": "MCP server for LAMMPS documentation knowledge base - provides RAG-based search for LAMMPS commands and usage",
   "main": "dist/index.js",
+  "bin": {
+    "lammps-docs-mcp": "dist/index.js"
+  },
   "type": "module",
+  "files": [
+    "dist/",
+    "data/",
+    "knowledge/",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "tsx src/index.ts",
     "index": "tsx src/indexer/buildIndex.ts",
-    "inspect": "npx @modelcontextprotocol/inspector node dist/index.js"
+    "inspect": "npx @modelcontextprotocol/inspector node dist/index.js",
+    "fetch-docs": "bash scripts/fetch-lammps-docs.sh",
+    "fetch-docs-api": "tsx scripts/fetch-lammps-docs-api.ts",
+    "process-docs": "tsx scripts/process-docs.ts",
+    "rebuild-kb": "npm run fetch-docs && npm run process-docs && npm run index",
+    "rebuild-kb-api": "npm run fetch-docs-api && npm run process-docs && npm run index",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "lammps",
     "mcp",
     "model-context-protocol",
     "molecular-dynamics",
-    "documentation"
+    "documentation",
+    "rag",
+    "knowledge-base"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erwanjun/LAMMPS-Docs-MCP.git"
+  },
+  "homepage": "https://github.com/erwanjun/LAMMPS-Docs-MCP#readme",
+  "bugs": {
+    "url": "https://github.com/erwanjun/LAMMPS-Docs-MCP/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.0",
     "gray-matter": "^4.0.3"

@@ -3,6 +3,9 @@ dist/
 *.tgz
 .DS_Store
 
+# Raw LAMMPS docs (fetched on demand, ~200MB)
+raw-docs/
+
 # Temporary build scripts
 copy_knowledge.sh
 add_frontmatter.py

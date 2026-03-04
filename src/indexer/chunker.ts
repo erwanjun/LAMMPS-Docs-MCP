@@ -37,7 +37,6 @@ interface HeadingNode {
 
 const MAX_CHUNK_TOKENS = 1500;
 const MIN_CHUNK_TOKENS = 100;
-const OVERLAP_LINES = 3;
 
 /**
  * Estimate token count (rough: 1 token ≈ 4 chars for English, ≈ 2 chars for CJK)

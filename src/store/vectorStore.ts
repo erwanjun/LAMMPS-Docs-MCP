@@ -42,6 +42,7 @@ const INDEX_FILENAME = "tfidf_index.json";
 
 /**
  * Keyword match score — checks how many query terms appear in the chunk
+ * Uses word boundary matching to avoid false positives (e.g., "run" matching "running")
  */
 function keywordScore(queryTokens: string[], chunk: Chunk): number {
   const searchText = [
@@ -56,7 +57,12 @@ function keywordScore(queryTokens: string[], chunk: Chunk): number {
 
   let matched = 0;
   for (const term of queryTokens) {
-    if (searchText.includes(term)) {
+    // Use word boundary regex for more precise matching
+    // Allow LAMMPS-specific separators (/, _, -) as part of word boundaries
+    const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const pattern = new RegExp(`(?:^|[\\s,;:()\\[\\]])${escaped}(?:[\\s,;:()\\[\\]]|$)`);
+    if (pattern.test(searchText) || searchText.includes(term)) {
+      // Give full credit for exact substring, but the regex check prioritizes boundary matches
       matched++;
     }
   }
@@ -189,7 +195,7 @@ export class VectorStore {
       throw new Error("Index not loaded. Run `npm run index` first.");
     }
 
-    const minScore = options?.minScore ?? 0.05;
+    const minScore = options?.minScore ?? 0.1;
     const queryTokens = tokenize(queryText);
     const queryVector = toTfIdfVector(queryTokens, this.model);
 

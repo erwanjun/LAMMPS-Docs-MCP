@@ -1,59 +1,65 @@
-# LAMMPS MCP Server
+# LAMMPS-Docs-MCP
 
-A [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server that provides RAG-based search over LAMMPS molecular dynamics documentation. Enables large language models (LLMs) to search and retrieve LAMMPS commands, usage patterns, and concepts.
+[English](README.md) | [中文](README.zh-CN.md)
+
+A [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server that provides RAG-based search over [LAMMPS](https://www.lammps.org/) molecular dynamics documentation. Enables LLMs to search, retrieve, and reference LAMMPS commands, usage patterns, and best practices — helping you write, debug, and understand LAMMPS input scripts.
 
 ## Features
 
-- **Semantic Search** — Natural language queries across the entire LAMMPS knowledge base
-- **Hybrid Retrieval** — Combines vector similarity with keyword matching for precise results
-- **Command Lookup** — Exact LAMMPS command name lookup (e.g., `fix nvt`, `pair_style lj/cut`)
-- **Zero-cost** — Uses local embedding model (`all-MiniLM-L6-v2`), no API keys needed
-- **Offline capable** — Runs entirely locally after initial model download
-- **Pre-built index** — Included in the repo, no indexing step needed to get started
+- **Hybrid Search** — TF-IDF + keyword matching for precise document retrieval
+- **Command Lookup** — Exact LAMMPS command lookup (e.g., `fix nvt`, `pair_style lj/cut`)
+- **Command Browser** — List all indexed commands, filtered by category
+- **Usage Examples** — Retrieve examples for any documented command
+- **Prompt Templates** — Pre-built prompts for writing scripts, debugging, explaining commands, and finding potentials
+- **Zero Dependencies** — Pure JavaScript TF-IDF, no external models or API keys needed
+- **Offline Capable** — Runs entirely locally with a pre-built index
+- **1230 Documents** — Comprehensive coverage of LAMMPS commands, fixes, computes, pair styles, and more
 
 ## MCP Tools
 
 | Tool | Description |
 |------|-------------|
-| `search_lammps_docs` | Semantic + keyword hybrid search across the knowledge base |
+| `search_lammps_docs` | TF-IDF + keyword hybrid search across the knowledge base |
 | `lookup_command` | Look up documentation for a specific LAMMPS command by name |
 | `list_commands` | List all documented LAMMPS commands, optionally filtered by category |
 | `get_example` | Get usage examples for a specific command |
 
-## Quick Start
+## MCP Prompts
 
-### Prerequisites
+| Prompt | Description |
+|--------|-------------|
+| `write_lammps_script` | Generate a complete LAMMPS input script for a given simulation task |
+| `explain_command` | Get a detailed explanation of any LAMMPS command |
+| `debug_lammps_script` | Analyze a script for issues, with common error pattern detection |
+| `find_potential` | Find the best pair_style for a given material system |
 
-- Node.js >= 18
-- npm or yarn
+## Installation
 
-### Installation
+### Option 1: Install from npm (recommended)
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/lammps-mcp-server.git
-cd lammps-mcp-server
+npm install -g lammps-docs-mcp
+```
+
+After installation, you can run it directly:
+
+```bash
+lammps-docs-mcp
+```
+
+Or use `npx` without installing:
+
+```bash
+npx lammps-docs-mcp
+```
+
+### Option 2: Build from source
+
+```bash
+git clone https://github.com/erwanjun/LAMMPS-Docs-MCP.git
+cd LAMMPS-Docs-MCP
 npm install
 npm run build
-```
-
-### Build the Vector Index
-
-If the pre-built index is not included or you've updated the knowledge base:
-
-```bash
-npm run index
-```
-
-This will:
-1. Read all markdown files from `knowledge/`
-2. Split them into semantic chunks
-3. Generate embeddings using a local model (first run downloads ~30MB model)
-4. Save the vector index to `data/vector_index.json`
-
-### Run the Server
-
-```bash
-npm start
 ```
 
 ## Client Configuration
@@ -62,20 +68,33 @@ npm start
 
 Add to your `claude_desktop_config.json`:
 
+**If installed globally (npm):**
 ```json
 {
   "mcpServers": {
     "lammps": {
-      "command": "node",
-      "args": ["/ABSOLUTE/PATH/TO/lammps-mcp-server/dist/index.js"]
+      "command": "lammps-docs-mcp"
     }
   }
 }
 ```
 
-**Config file locations:**
+**If built from source:**
+```json
+{
+  "mcpServers": {
+    "lammps": {
+      "command": "node",
+      "args": ["/ABSOLUTE/PATH/TO/LAMMPS-Docs-MCP/dist/index.js"]
+    }
+  }
+}
+```
+
+Config file locations:
 - macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
 - Windows: `%APPDATA%\Claude\claude_desktop_config.json`
+- Linux: `~/.config/Claude/claude_desktop_config.json`
 
 ### VS Code (GitHub Copilot)
 
@@ -85,8 +104,21 @@ Add to your workspace `.vscode/mcp.json`:
 {
   "servers": {
     "lammps": {
+      "command": "npx",
+      "args": ["lammps-docs-mcp"]
+    }
+  }
+}
+```
+
+Or if built from source:
+
+```json
+{
+  "servers": {
+    "lammps": {
       "command": "node",
-      "args": ["/ABSOLUTE/PATH/TO/lammps-mcp-server/dist/index.js"]
+      "args": ["/ABSOLUTE/PATH/TO/LAMMPS-Docs-MCP/dist/index.js"]
     }
   }
 }
@@ -94,14 +126,14 @@ Add to your workspace `.vscode/mcp.json`:
 
 ### Cursor
 
-Add to your Cursor MCP settings:
+Add to Cursor MCP settings:
 
 ```json
 {
   "mcpServers": {
     "lammps": {
-      "command": "node",
-      "args": ["/ABSOLUTE/PATH/TO/lammps-mcp-server/dist/index.js"]
+      "command": "npx",
+      "args": ["lammps-docs-mcp"]
     }
   }
 }
@@ -110,26 +142,35 @@ Add to your Cursor MCP settings:
 ## Development
 
 ```bash
-# Run in development mode (with tsx, no build needed)
+# Install dependencies
+npm install
+
+# Run in development mode (no build needed)
 npm run dev
+
+# Build TypeScript
+npm run build
 
 # Test with MCP Inspector
 npm run inspect
 
-# Rebuild index after updating knowledge base
+# Rebuild TF-IDF index after updating knowledge base
 npm run index
+
+# Full rebuild: fetch docs → process → index
+npm run rebuild-kb
 ```
 
-## Knowledge Base Structure
+## Knowledge Base
 
-The `knowledge/` directory contains markdown files with YAML frontmatter:
+The `knowledge/` directory contains 1230 Markdown files covering the LAMMPS documentation. Each file has YAML frontmatter:
 
 ```yaml
 ---
 title: "Fix Langevin Thermostat"
 description: "fix langevin thermostat including Drude oscillator and eff variants"
 category: "fix"
-tags: ["thermostat", "langevin", "temperature-control", "Drude"]
+tags: ["thermostat", "langevin", "temperature-control"]
 commands: ["fix langevin", "fix langevin/drude", "fix langevin/eff"]
 ---
 ```
@@ -139,47 +180,71 @@ commands: ["fix langevin", "fix langevin/drude", "fix langevin/eff"]
 | Category | Description |
 |----------|-------------|
 | `general` | Introduction, installation, error messages |
-| `command` | General LAMMPS commands (mass, set, dump_modify, etc.) |
-| `fix` | Fix commands (thermostat, barostat, constraints, etc.) |
-| `compute` | Compute commands (kinetic energy, MSD, etc.) |
-| `pair_style` | Pair potentials (LJ, EAM, granular, ML potentials, etc.) |
+| `command` | General commands (mass, set, dump_modify, etc.) |
+| `fix` | Fix commands (thermostats, barostats, constraints) |
+| `compute` | Compute commands (energy, RDF, MSD, etc.) |
+| `pair_style` | Pair potentials (LJ, EAM, ReaxFF, ML potentials) |
 | `bond_style` | Bond potentials (FENE, harmonic, etc.) |
-| `howto` | Theory and tutorials |
+| `howto` | Tutorials and theory |
 | `developer` | Code architecture and API documentation |
 
-## Adding New Documentation
+### Updating the Knowledge Base
 
-1. Create a new `.md` file in `knowledge/`
-2. Add YAML frontmatter with `title`, `description`, `category`, `tags`, `commands`
-3. Rebuild the index: `npm run index`
+To refresh from the latest LAMMPS documentation:
+
+```bash
+# Fetch RST docs from LAMMPS GitHub repo
+npm run fetch-docs
+
+# Convert RST → Markdown with frontmatter
+npm run process-docs
+
+# Rebuild the TF-IDF index
+npm run index
+
+# Or do all three in one step:
+npm run rebuild-kb
+```
 
 ## Architecture
 
 ```
-lammps-mcp-server/
+LAMMPS-Docs-MCP/
 ├── src/
 │   ├── index.ts              # MCP server entry point
 │   ├── tools/
-│   │   ├── search.ts         # Semantic search tool
+│   │   ├── search.ts         # TF-IDF + keyword hybrid search
 │   │   └── lookup.ts         # Command lookup tools
 │   ├── indexer/
 │   │   ├── chunker.ts        # Markdown → chunks splitter
-│   │   ├── embedder.ts       # Local embedding model
+│   │   ├── embedder.ts       # TF-IDF vectorizer
 │   │   └── buildIndex.ts     # Index builder script
 │   └── store/
-│       └── vectorStore.ts    # Vector similarity search
-├── knowledge/                 # LAMMPS documentation (markdown)
-├── data/                      # Pre-computed vector index
+│       └── vectorStore.ts    # TF-IDF search engine
+├── knowledge/                 # 1230 LAMMPS documentation files (Markdown)
+├── data/
+│   └── tfidf_index.json      # Pre-computed TF-IDF index
+├── scripts/
+│   ├── fetch-lammps-docs.sh  # Fetch RST docs from LAMMPS repo
+│   ├── fetch-lammps-docs-api.ts  # Alternative: fetch via GitHub API
+│   ├── process-docs.ts       # RST → Markdown converter
+│   └── rst-converter.ts      # Custom RST parser
 ├── package.json
-└── tsconfig.json
+├── tsconfig.json
+└── LICENSE
 ```
+
+## How It Works
+
+1. **Documentation Pipeline**: LAMMPS RST docs → Markdown with frontmatter → chunked by headings → TF-IDF indexed
+2. **Search**: Queries are tokenized and matched against the TF-IDF index (60% weight) + keyword matching (40% weight) for hybrid scoring
+3. **MCP Protocol**: The server exposes tools, resources, and prompt templates via the [Model Context Protocol](https://modelcontextprotocol.io) over stdio
 
 ## License
 
-MIT
+MIT — see [LICENSE](LICENSE)
 
 ## Acknowledgments
 
 - Documentation sourced from [LAMMPS](https://www.lammps.org/) (GPL-2.0)
 - MCP SDK by [Anthropic](https://github.com/modelcontextprotocol)
-- Embedding model: [all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2) by sentence-transformers
