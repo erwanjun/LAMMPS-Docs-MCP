@@ -1,0 +1,31 @@
+{
+  "name": "lammps-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for LAMMPS documentation knowledge base - provides RAG-based search for LAMMPS commands and usage",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "index": "tsx src/indexer/buildIndex.ts",
+    "inspect": "npx @modelcontextprotocol/inspector node dist/index.js"
+  },
+  "keywords": [
+    "lammps",
+    "mcp",
+    "model-context-protocol",
+    "molecular-dynamics",
+    "documentation"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "gray-matter": "^4.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}
