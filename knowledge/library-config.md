@@ -76,7 +76,8 @@ int main(int argc, char **argv)
   lammps_close(handle);
   return 0;
 }
-## ```
+```
+-----------------------
 
 -----------------------
 

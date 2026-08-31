@@ -268,7 +268,8 @@ linear fashion over the course of a simulation:
 ```lammps
 variable prefactor equal ramp(10,30)
 fix 1 all adapt 1 pair soft a * * v_prefactor
-### ```
+```
+----------
 
 The *kspace* keyword used the specified variable as a scale factor on
 the energy, forces, virial calculated by whatever $k$-space solver is

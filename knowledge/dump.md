@@ -518,7 +518,8 @@ time: 0.5
   [...]
 
 ...
-### ```
+```
+----------
 
 Frequency of dump output:
 
@@ -732,7 +733,8 @@ compute myPress all stress/atom NULL
 dump 2 all custom 100 tmp.dump id myPress[*]
 dump 2 all custom 100 tmp.dump id myPress[1] myPress[2] myPress[3] &
                                   myPress[4] myPress[5] myPress[6]
-### ```
+```
+----------
 
 Per-atom attributes used as arguments to the *custom* and *cfg* styles:
 
@@ -917,7 +919,8 @@ the distance and energy of each bond:
 compute 1 all property/local batom1 batom2 btype
 compute 2 all bond/local dist engpot
 dump 1 all local 1000 tmp.dump index c_1[1] c_1[2] c_1[3] c_2[1] c_2[2]
-### ```
+```
+----------
 
 Attributes used as arguments to the *grid* and *grid/vtk* styles:
 

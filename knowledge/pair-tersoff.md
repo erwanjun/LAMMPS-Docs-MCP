@@ -254,7 +254,8 @@ pair_coeff  * * ilp/graphene/hbn  BNCH.ILP    B    N    C
 pair_coeff  1 1 coul/shield 0.70
 pair_coeff  1 2 coul/shield 0.695
 pair_coeff  2 2 coul/shield 0.69
-### ```
+```
+----------
 
 ----------
 

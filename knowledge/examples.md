@@ -213,7 +213,8 @@ browser.
 
 ```bash
 % convert -loop 1 *.jpg foo.gif
-## ```
+```
+----------
 
 ## Uppercase directories
 

@@ -497,7 +497,8 @@ Equivalences
 5   5
 6   6
 7   7
-### ```
+```
+----------
 
 A user-specified set of atoms can be deleted by listing their
 pre-reaction template IDs in the DeleteIDs section. A deleted atom

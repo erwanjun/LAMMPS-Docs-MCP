@@ -267,7 +267,8 @@ The list of fields stored in an adios .bp file is recorded in the attributes
 $ bpls -la dump.bp column*
   string    columns            attr   = {"id", "type", "x", "y", "z", "vx", "vy", "vz"}
   string    columnstr          attr   = "id type x y z vx vy vz "
-### ```
+```
+----------
 
 Information from the dump file snapshot is used to overwrite or
 replace properties of the current system.  There are various options

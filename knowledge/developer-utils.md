@@ -178,7 +178,8 @@ This code example should produce the following output:
 ```
 Reading numbers failed: Not a valid floating-point number: 'twentytwo'
 Values: 20 21 0 0
-# ```
+```
+----------
 
 ----------
 
@@ -216,7 +217,8 @@ for (iarg = 0; iarg < nargnew; iarg++) {
 
   nvalues++;
 }
-# ```
+```
+----------
 
 ----------
 
@@ -282,7 +284,8 @@ A file that would be parsed by the reader code fragment looks like this:
 
 Al      0.000000        10.328655       0.000000        0.968438        0.763905
 O       5.484763        14.035715       0.000000        2.143957        0.000000
-# ```
+```
+----------
 
 ----------
 
@@ -401,7 +404,8 @@ int type = utils::expand_type_int(FLERR, "C", Atom::ATOM, lmp, true);
 int lo, hi;
 utils::bounds_typelabel(FLERR, "C:H", 1, 10, lo, hi, lmp, Atom::ATOM);
 // Expands "C:H" to numeric range, e.g., "1:2" -> lo=1, hi=2
-# ```
+```
+----------
 
 ## LabelMap class reference
 
@@ -457,7 +461,8 @@ its size is registered later with :cpp`MyPage::vgot()
        }
        return dlist;
    }
-# ```
+```
+----------
 
 ----------
 

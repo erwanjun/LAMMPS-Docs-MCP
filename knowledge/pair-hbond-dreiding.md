@@ -262,7 +262,8 @@ compute hb all pair hbond/dreiding/lj
 variable n_hbond equal c_hb[1] #number hbonds
 variable E_hbond equal c_hb[2] #hbond energy
 thermo_style custom step temp epair v_E_hbond
-### ```
+```
+----------
 
 ## Restrictions
 

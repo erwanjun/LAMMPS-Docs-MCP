@@ -258,7 +258,8 @@ next        a
 jump        in.script loop
 label       break
 variable    a delete
-### ```
+```
+----------
 
 The next sections describe in how all the various variable styles are
 defined and what they store.  The styles are listed alphabetically,
@@ -323,7 +324,8 @@ Below is a small example for the atomfile variable file format:
 
 2  1.0
 4 -1.0
-### ```
+```
+----------
 
 For the *file* style, a filename is provided which contains a list of
 strings to assign to the variable, one per line.  The strings can be
@@ -1065,7 +1067,8 @@ variable timeout equal is_timeout()
 timer timeout 0:10:00 every 10
 run 10000
 if ${timeout} then "print 'Timer has expired'"
-### ```
+```
+----------
 
 ### Feature Functions
 

@@ -85,7 +85,8 @@ fix 1 all ave/atom 10 20 1000 c_my_stress[*]
 fix 1 all ave/atom 10 20 1000 c_my_stress[1] c_my_stress[2] &
                               c_my_stress[3] c_my_stress[4] &
                               c_my_stress[5] c_my_stress[6]
-### ```
+```
+----------
 
 The $N_\text{every}$, $N_\text{repeat}$, and $N_\text{freq}$
 arguments specify on what timesteps the input values will be used in order to

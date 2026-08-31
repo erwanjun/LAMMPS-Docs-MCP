@@ -83,7 +83,8 @@ cd AMBER2LAMMPS-main
 # clone repository
 git clone https://github.com/askforarun/AMBER2LAMMPS.git
 cd AMBER2LAMMPS
-## ```
+```
+----------------
 
 ## Requirements
 
@@ -152,7 +153,8 @@ sudo dnf install openbabel
 
 # macOS
 brew install open-babel
-## ```
+```
+----------------
 
 ## Command Reference
 

@@ -118,7 +118,8 @@ cmake . -DPython_EXECUTABLE=$(which python)
 
 # return to original shell
 (testing) deactivate
-## ```
+```
+-------
 
 ## Creating a new lammps instance
 
@@ -225,7 +226,8 @@ x[0] = (1.0, 0.0)
 
 # set position in 3D simulation
 x[0] = (1.0, 0.0, 1.)
-## ```
+```
+------
 
 ## Retrieving the values of thermodynamic data and variables
 

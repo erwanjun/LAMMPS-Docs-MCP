@@ -25,7 +25,8 @@ variable VERBOSE set to 1:
 
 ```bash
 make VERBOSE=1
-## ```
+```
+----------
 
 
 ## Report missing and unneeded '#include' statements (CMake only)
@@ -83,7 +84,8 @@ compilation and linking stages.  This is done through setting the
 -D ENABLE_SANITIZER=leak       # enable memory leak checker (only)
 -D ENABLE_SANITIZER=undefined  # enable undefined behavior sanitizer
 -D ENABLE_SANITIZER=thread     # enable thread sanitizer
-## ```
+```
+----------
 
 
 ## Code Coverage and Unit Testing (CMake only)
@@ -589,7 +591,8 @@ The following target are available for both, GNU make and CMake:
 ```bash
 make format-src       # apply clang-format to all files in src and the package folders
 make format-tests     # apply clang-format to all files in the unittest tree
-## ```
+```
+----------
 
 
 ## GitHub command-line interface

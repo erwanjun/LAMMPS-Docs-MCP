@@ -30,7 +30,8 @@ elif lmp.has_gzip_support():
     lmp.command("dump d1 all atom 100 dump.gz")
 else:
     lmp.command("dump d1 all atom 100 dump")
-## ```
+```
+-----------------------
 
 **Methods:**
 

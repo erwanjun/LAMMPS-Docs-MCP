@@ -236,7 +236,8 @@ run          100000
 variable     k equal (v_k11+v_k22+v_k33)/3.0
 variable     ndens equal count(all)/vol
 print        "average conductivity: $k[W/mK] @ $T K, ${ndens} /A\^3"
-### ```
+```
+----------
 
 
 **(Surblys2019)** Surblys, Matsubara, Kikugawa, Ohara, Phys Rev E, 99, 051301(R) (2019).

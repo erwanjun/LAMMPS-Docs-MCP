@@ -179,7 +179,8 @@ variable REBO     equal c_0[1]
 variable LJ       equal c_0[2]
 variable TORSION  equal c_0[3]
 thermo_style custom step temp epair v_REBO v_LJ v_TORSION
-### ```
+```
+----------
 
 ----------
 

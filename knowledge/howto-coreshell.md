@@ -234,7 +234,8 @@ CS-Info         # header of additional section
 7   4
 8   4
 (...)
-## ```
+```
+----------
 
 
 **(Mitchell and Fincham)** Mitchell, Fincham, J Phys Condensed Matter,

@@ -52,7 +52,8 @@ create a new file at each individual dump.
 ```lammps
 dump 4     all atom/adios 100 dump.bp
 write_dump all atom/adios singledump.bp
-### ```
+```
+----------
 
 ## Restrictions
 

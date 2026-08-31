@@ -13,8 +13,12 @@ OPT.
 * [none](bond_none)
 * [zero](bond_zero)
 * [hybrid (k)](bond_hybrid)
-## *
-## *
+*
+*
+*
+*
+*
+*
 *
 * [bpm/rotational](bond_bpm_rotational)
 * [bpm/spring](bond_bpm_spring)
@@ -52,8 +56,12 @@ OPT.
 * [none](angle_none)
 * [zero](angle_zero)
 * [hybrid (k)](angle_hybrid)
-## *
-## *
+*
+*
+*
+*
+*
+*
 *
 * [amoeba](angle_amoeba)
 * [charmm (iko)](angle_charmm)
@@ -91,8 +99,12 @@ OPT.
 * [none](dihedral_none)
 * [zero](dihedral_zero)
 * [hybrid (k)](dihedral_hybrid)
-## *
-## *
+*
+*
+*
+*
+*
+*
 *
 * [charmm (iko)](dihedral_charmm)
 * [charmmfsw (k)](dihedral_charmm)
@@ -121,8 +133,12 @@ OPT.
 * [none](improper_none)
 * [zero](improper_zero)
 * [hybrid (k)](improper_hybrid)
-## *
-## *
+*
+*
+*
+*
+*
+*
 *
 * [amoeba](improper_amoeba)
 * [class2 (ko)](improper_class2)

@@ -353,7 +353,8 @@ create_atoms    1 box      &
         basis   6       2       &
         basis   7       2       &
         basis   8       2
-### ```
+```
+----------
 
 ## Restrictions
 

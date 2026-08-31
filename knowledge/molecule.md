@@ -889,7 +889,8 @@ contain only one atom:
         ]
     }
 }
-### ```
+```
+----------
 
 ## Restrictions
 

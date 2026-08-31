@@ -647,7 +647,8 @@ Atoms section:
 
 ```
 10 1 17 -1.0 10.0 5.0 6.0   # salt ion
-### ```
+```
+----------
 
 *Angle Coeffs* section:
 
@@ -698,7 +699,8 @@ labels can be used.
 ```
 ID = improper type (1-N)
 coeffs = list of coeffs (see [improper_coeff](improper_coeff))
-### ```
+```
+----------
 
 *AngleAngleTorsion Coeffs* section:
 
@@ -708,7 +710,8 @@ coeffs = list of coeffs (see [improper_coeff](improper_coeff))
 ```
 ID = dihedral type (1-N)
 coeffs = list of coeffs (see [dihedral_coeff](dihedral_coeff))
-### ```
+```
+----------
 
 *Angles* section:
 
@@ -747,7 +750,8 @@ and a general discussion of how type labels can be used.
 ```
 ID = dihedral type (1-N)
 coeffs = list of coeffs (see [dihedral_coeff](dihedral_coeff))
-### ```
+```
+----------
 
 *Atom Type Labels* section:
 
@@ -1124,7 +1128,8 @@ labels can be used.
 ```
 ID = angle type (1-N)
 coeffs = list of coeffs (see class 2 section of [angle_coeff](angle_coeff))
-### ```
+```
+----------
 
 *BondBond Coeffs* section:
 
@@ -1134,7 +1139,8 @@ coeffs = list of coeffs (see class 2 section of [angle_coeff](angle_coeff))
 ```
 ID = angle type (1-N)
 coeffs = list of coeffs (see class 2 section of [angle_coeff](angle_coeff))
-### ```
+```
+----------
 
 *BondBond13 Coeffs* section:
 
@@ -1144,7 +1150,8 @@ coeffs = list of coeffs (see class 2 section of [angle_coeff](angle_coeff))
 ```
 ID = dihedral type (1-N)
 coeffs = list of coeffs (see class 2 section of [dihedral_coeff](dihedral_coeff))
-### ```
+```
+----------
 
 *Bonds* section:
 
@@ -1293,7 +1300,8 @@ The *Ellipsoids* section must appear after the *Atoms* section.
 ```
 ID = dihedral type (1-N)
 coeffs = list of coeffs (see class 2 section of [dihedral_coeff](dihedral_coeff))
-### ```
+```
+----------
 
 *Improper Coeffs* section:
 
@@ -1444,7 +1452,8 @@ used.
 ```
 ID = dihedral type (1-N)
 coeffs = list of coeffs (see class 2 section of [dihedral_coeff](dihedral_coeff))
-### ```
+```
+----------
 
 *Pair Coeffs* section:
 

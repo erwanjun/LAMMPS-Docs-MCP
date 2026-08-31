@@ -125,7 +125,8 @@ minimize 1e-6 1e-9 1000 100000
 # report unrestrained energies
 unfix REST
 run 0
-### ```
+```
+----------
 
 The *bond* keyword applies a bond restraint to the specified atoms
 using the same functional form used by the [bond_style harmonic](bond_harmonic) command.  The potential associated with

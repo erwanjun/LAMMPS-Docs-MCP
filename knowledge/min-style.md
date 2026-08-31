@@ -141,7 +141,8 @@ See the [Build package](Build_package) page for more info.
 
 ```lammps
 min_style cg
-### ```
+```
+----------
 
 
 **(Sheppard)** Sheppard, Terrell, Henkelman, J Chem Phys, 128, 134106

@@ -284,7 +284,8 @@ file, for code developers to track optimization.
 
 ```lammps
 fix_modify ID timer on/off
-### ```
+```
+----------
 
 These fixes compute a global (extensive) scalar, a global (intensive)
 vector, and a global array, which can be accessed by various

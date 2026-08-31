@@ -85,7 +85,9 @@ animate write psf peptide.psf top
 # and the processed trajectory data to a DCD file for future use
 animate write dcd peptide.dcd top waitfor all
 
-## # the steps up to this line only need to be run once
+###############################################################
+# the steps up to this line only need to be run once
+###############################################################
 # set visualization defaults
 display perspective orthographic
 mol default style Licorice
@@ -120,7 +122,7 @@ these examples may likely cause errors or look differently.
 
 ------------
 
-### Complete example inputs
+## Complete example inputs
 
 The discussions below only quote relevant sections of input files to
 show specifically the commands used in the visualizations.  There are
@@ -129,7 +131,7 @@ source code distribution.
 
 ---------------
 
-### Image quality and resolution
+## Image quality and resolution
 
 The image resolution is determined by the *size* keyword.  The default
 setting is to create images with 512x512 pixels.  This is rather low
@@ -198,7 +200,7 @@ parallelization available (e.g. for SSAO post-processing of image data).
 
 --------------------
 
-### Color selection and color management
+## Color selection and color management
 
 The [dump image](dump_image) command in LAMMPS has a variety
 of options to assign colors to the rendered graphics.  In most cases
@@ -269,7 +271,7 @@ colors1  colors2  colors3  colors4
 
 --------------------
 
-### Transparency
+## Transparency
 
 It is now possible to create approximately transparent graphics objects
 using an [ordered dithering algorithm](https://en.wikipedia.org/wiki/Ordered_dithering) which results in a
@@ -298,7 +300,7 @@ transparency1  transparency2
 
 -----------------------
 
-### Creating and viewing animated GIFs and movie files
+## Creating and viewing animated GIFs and movie files
 
 A series of JPEG, PNG, or PPM images can be converted into a movie file
 and then played as a movie using commonly available tools.  Using dump
@@ -384,7 +386,7 @@ a = animate("foo*.jpg")
 
 --------------
 
-### Prototyping dump image visualizations with LAMMPS-GUI
+## Prototyping dump image visualizations with LAMMPS-GUI
 
 One of the challenges when using [dump image](dump_image) for
 creating visualizations compared to the likes of [OVITO](https://www.ovito.org) and [VMD](https://www.ks.uiuc.edu/Research/vmd/) is that it is non-interactive
@@ -424,7 +426,7 @@ gui1  gui2  gui3
 
 --------------
 
-### Visualizing systems using potentials with implicit bonds
+## Visualizing systems using potentials with implicit bonds
 
 There are several pair styles available in LAMMPS where the bond
 information is not taken from from the bond topology in a data file but
@@ -503,7 +505,7 @@ bonds0  bonds1  bonds2  bonds3
 -------------
 
 
-### Visualizing body particles
+## Visualizing body particles
 
 Body particles are objects formed from either a collection of spherical
 particles, polygons (in 2d), or polyhedra (in 3d) formed from triangular
@@ -533,7 +535,7 @@ body1  body2  body3
 
 -------------
 
-### Visualizing ellipsoid particles
+## Visualizing ellipsoid particles
 
 Ellipsoidal particles are a generalization of spheres that may have
 three different radii to define the shape.  They can be modeled using
@@ -578,9 +580,10 @@ dump viz all image 1000 image-*.png type type ellipsoid type 3 4 0.05 &
       size 600 600 zoom 2.2 shiny 0.1 fsaa yes view 80 -10 box yes 0.025 &
       axes no 0.0 0.0 center s 0.5 0.5 0.5 ssao yes 32185474 0.6
 dump_modify viz pad 9 boxcolor white backcolor gray adiam 1 4 adiam 2 7
-### ```
+```
+-------------
 
-### Visualizing regions
+## Visualizing regions
 
 Since there are several commands that operate on atoms within a specific
 [region](region) , it can be helpful to visualize the extent of
@@ -667,9 +670,10 @@ dump viz all image 100 image-*.png type type size 600 600 zoom 1.4 shiny 0.1 vie
 dump_modify viz pad 4 boxcolor silver backcolor darkgray
 
 run 500
-### ```
+```
+-----------------------
 
-### Visualizing graphics provided by compute or fix commands
+## Visualizing graphics provided by compute or fix commands
 
 LAMMPS can display additional graphics objects in the [dump image](dump_image) output that are added by compute or fix styles.  These
 fall in two categories: fixes that were written with the specific
@@ -739,14 +743,14 @@ Below are discussions about some aspects of specific fix commands and some input
 
 -----------------------
 
-#### Fix graphics/objects
+### Fix graphics/objects
 
 Fix [graphics/objects](fix_graphics_objects) adds some graphics
 primitives and more complex objects like a progress bar to the
 visualization where properties of the object(s) are controlled by
 [equal-style or compatible variables](variable).
 
-#### Fix graphics/labels
+### Fix graphics/labels
 
 Fix [graphics/labels](fix_graphics_labels) adds graphics from
 pixmaps to the visualization.  These can be either images or text that
@@ -767,7 +771,7 @@ obscured by objects.
 
 -----------------------
 
-#### Fix graphics/arrows
+### Fix graphics/arrows
 
 Fix [graphics/arrows](fix_graphics_arrows) adds per-atom or
 per-chunk arrows to the visualization.  The arrows represent some
@@ -810,7 +814,7 @@ dump_modify viz pad 6 boxcolor white backcolor gray element O H  bdiam 1 0.2 &
              adiam 1 0.5 adiam 2 0.3 acolor 1 silver acolor 2 red fcolor vec goldenrod &
              fcolor dipole forestgreen ftrans dipole 0.75 fcolor vel cyan ftrans vel 0.5
 ```
-#### Fix graphics/isosurface
+### Fix graphics/isosurface
 
 Fix [graphics/isosurface](fix_graphics_isosurface) adds a
 triangulated surface following a given isovalue through a 3d-grid of
@@ -860,7 +864,7 @@ isosurface1  isosurface2
 
 ----------
 
-#### Compute hbond/local
+### Compute hbond/local
 
 Compute [hbond/local](compute_hbond_local) of the
 [EXTRA-COMPUTE package](#pkg-extra-compute) provides access to the
@@ -941,20 +945,20 @@ hbonds1  hbonds2
 
 ----------
 
-#### Fix reaxff/bonds
+### Fix reaxff/bonds
 
 Fix [reaxff/bonds](fix_reaxff_bonds) of the [REAXFF package](#pkg-reaxff) provides access to the list of bonds as they are
 dynamically computed by the [ReaxFF pair style](pair_reaxff).  As
 discussed above, this can be used to visualize bonds for a system where
 there is no explicit bond topology defined.
 
-#### Fix smd/wall_surface
+### Fix smd/wall_surface
 
 Fix [smd/wall_surface](fix_smd_wall_surface) of the [MACHDYN
 package](#pkg-machdyn) creates a custom wall from a mesh of triangles
 that is read from an STL format file.
 
-#### MC package fixes
+### MC package fixes
 
 Several fixes from the [MC package](#pkg-mc) have support for
 adding graphics to a visualization.  These are typically added spheres

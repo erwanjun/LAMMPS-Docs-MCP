@@ -186,7 +186,8 @@ to add a *fix momentum* command:
 
 ```lammps
 fix fMOMENTUM all momentum 100 linear 1 1 1
-### ```
+```
+----------
 
 ## Restart, fix_modify, output, run start/stop, minimize info
 

@@ -208,7 +208,8 @@ class Harmonic(LAMMPSPairPotential):
             return delta*delta*coeff[0]
         else:
             return 0.0
-### ```
+```
+----------
 
 
 > **Admonition: Performance Impact**

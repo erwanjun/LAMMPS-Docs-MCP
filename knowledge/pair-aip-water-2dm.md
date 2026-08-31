@@ -111,7 +111,8 @@ compute 0 all pair aip/water/2dm
 variable Evdw  equal c_0[1]
 variable Erep  equal c_0[2]
 thermo_style custom step temp epair v_Erep v_Evdw
-### ```
+```
+----------
 
 ----------
 

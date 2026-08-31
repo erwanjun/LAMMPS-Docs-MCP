@@ -91,7 +91,8 @@ status of broken bonds or permanently delete them, e.g.:
 ```lammps
 delete_bonds all stats
 delete_bonds all bond 0 remove
-### ```
+```
+----------
 
 ----------
 

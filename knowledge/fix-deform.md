@@ -508,7 +508,8 @@ variable Tp equal 10.0
 variable displace equal "v_A * sin(2*PI * step*dt/v_Tp)"
 variable rate equal "2*PI*v_A/v_Tp * cos(2*PI * step*dt/v_Tp)"
 fix 2 all deform 1 xy variable v_displace v_rate remap v
-### ```
+```
+----------
 
 All of the tilt styles change the xy, xz, yz tilt factors during a
 simulation.  In LAMMPS, tilt factors (xy,xz,yz) for triclinic boxes

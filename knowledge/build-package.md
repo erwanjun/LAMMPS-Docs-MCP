@@ -171,7 +171,8 @@ cmake -D PKG_BODY=on .
 # to reset the package selection from above to the default of no packages
 # but leaving all other settings untouched. You can run:
 cmake -C ../cmake/presets/all_off.cmake .
-#### ```
+```
+----------
 
 ## Make shortcuts for installing many packages
 

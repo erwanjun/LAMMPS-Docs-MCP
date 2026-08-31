@@ -445,7 +445,8 @@ create_box  1 box
 variable    v equal "(0.2*v_y*ylat * cos(v_xx/xlat * 2.0*PI*4.0/v_x) + 0.5*v_y*ylat - v_yy) > 0.0"
 create_atoms  1 box var v set x xx set y yy
 write_dump  all atom sinusoid.lammpstrj
-### ```
+```
+-----
 
 The *rotate* keyword allows specification of the orientation
 at which molecules are inserted.  The axis of rotation is

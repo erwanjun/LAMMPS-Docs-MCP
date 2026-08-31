@@ -195,7 +195,8 @@ xy Pstart Pstop Pdamp
 xz Pstart Pstop Pdamp
 yz Pstart Pstop Pdamp
 couple none
-### ```
+```
+----------
 
 The *flip* keyword allows the tilt factors for a triclinic box to
 exceed half the distance of the parallel box length, as discussed

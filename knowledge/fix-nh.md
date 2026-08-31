@@ -134,7 +134,8 @@ by the velocity/position update portion of the integration.
 
 ```lammps
 fix 1 all nvt temp 300.0 300.0 $(100.0*dt)
-### ```
+```
+----------
 
 The barostat parameters for fix styles *npt* and *nph* is specified
 using one or more of the *iso*, *aniso*, *tri*, *x*, *y*, *z*, *xy*,
@@ -281,7 +282,8 @@ xy 0.0 0.0 Pdamp
 yz 0.0 0.0 Pdamp
 xz 0.0 0.0 Pdamp
 couple none
-### ```
+```
+----------
 
 In some cases (e.g. for solids) the pressure (volume) and/or
 temperature of the system can oscillate undesirably when a Nose/Hoover

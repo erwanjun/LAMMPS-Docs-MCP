@@ -192,7 +192,8 @@ or using an explicit URL:
 
 ```bash
 git push git@github.com:Pakketeretet2/lammps.git
-## ```
+```
+----------
 
 **Filing a pull request**
 

@@ -89,7 +89,8 @@ store once the species data in the same file.
 ```lammps
 dump h5md1 all h5md 100 dump.h5 position image
 write_dump all h5md dump.h5 file_from h5md1 species
-### ```
+```
+----------
 
 ## Restrictions
 

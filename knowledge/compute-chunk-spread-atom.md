@@ -100,7 +100,8 @@ with 3 columns:
 compute com all com/chunk mychunk
 compute 10 all chunk/spread/atom mychunk c_com[*]
 compute 10 all chunk/spread/atom mychunk c_com[1] c_com[2] c_com[3]
-### ```
+```
+----------
 
 Here is an example of writing a dump file the with the center-of-mass
 (COM) for the chunk each atom is in.  The commands below can be added
@@ -153,7 +154,8 @@ thermo_style    custom step etotal press v_ave
      800    22.584683    4.9691734    4.6000016
      900     22.59128    5.0247538    4.5611513
     1000    22.586832      4.94697    4.5238362
-### ```
+```
+----------
 
 Here is an example for using one set of chunks, defined for molecules,
 to compute the dipole moment vector for each chunk.  E.g. for water

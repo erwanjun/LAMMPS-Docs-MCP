@@ -145,7 +145,8 @@ The following commands will not work:
 ```lammps
 fix f5 all npt/uef temp 0.7 0.7 0.5 x 1 1 5 z 1 1 5 erate -0.5 -0.5
 fix f6 all npt/uef temp 0.7 0.7 0.5 x 1 1 5 z 2 2 5 erate 0.5 0.5
-### ```
+```
+----------
 
 These fixes compute a temperature and pressure each timestep.  To do
 this, they create their own computes of style "temp/uef" and

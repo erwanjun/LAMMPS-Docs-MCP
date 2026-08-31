@@ -89,7 +89,8 @@ to a file:
 ```lammps
 compute 1 all rigid/local myRigid mol x y z fx fy fz
 dump 1 all local 1000 tmp.dump index c_1[1] c_1[2] c_1[3] c_1[4] c_1[5] c_1[6] c_1[7]
-### ```
+```
+----------
 
 This section explains the rigid body attributes that can be specified.
 

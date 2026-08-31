@@ -102,7 +102,8 @@ compute 0 all pair ilp/tmd
 variable Evdw  equal c_0[1]
 variable Erep  equal c_0[2]
 thermo_style custom step temp epair v_Erep v_Evdw
-### ```
+```
+----------
 
 ----------
 

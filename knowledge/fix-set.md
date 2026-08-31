@@ -74,7 +74,9 @@ be output every step for *twindow* timesteps.
 ```lammps
 variable        vthresh equal 2             # threshold velocity
 variable        twindow equal 10            # dump for this many steps
-### # define custom property i_dump to store timestep threshold is crossed
+#
+# define custom property i_dump to store timestep threshold is crossed
+#
 fix             2 all property/atom i_dump
 set             group all i_dump -1
 #
@@ -84,7 +86,9 @@ set             group all i_dump -1
 variable        start atom "vx > v_vthresh && i_dump == -1"
 variable        new atom ternary(v_start,step,i_dump)
 fix             3 all set 1 0 group all i_dump v_new
-### # dump command with thresh which enforces twindow
+#
+# dump command with thresh which enforces twindow
+#
 dump            1 all custom 1 tmp.dump id x y vx i_dump
 variable        dumpflag atom "i_dump >= 0 && (step-i_dump) < v_twindow"
 dump_modify     1 thresh v_dumpflag == 1
@@ -110,7 +114,9 @@ longer useful.
 ```lammps
 variable        vthresh equal 2             # threshold velocity
 variable        twindow equal 10            # dump for this many steps
-### # define custom property i_dump to store timestep threshold is crossed
+#
+# define custom property i_dump to store timestep threshold is crossed
+#
 fix             2 all property/atom i_dump
 set             group all i_dump -1
 #
@@ -122,13 +128,18 @@ variable        turnon atom ternary(v_start,step,i_dump)
 variable        stop atom "v_turnon >= 0 && (step-v_turnon) < v_twindow"
 variable        turnoff atom ternary(v_stop,v_turnon,-1)
 fix             3 all set 1 0 group all i_dump v_turnoff
-### # dump command with thresh which enforces twindow
+#
+# dump command with thresh which enforces twindow
+#
 dump            1 all custom 1 tmp.dump id x y vx i_dump
 variable        dumpflag atom "i_dump >= 0 && (step-i_dump) < v_twindow"
 dump_modify     1 thresh v_dumpflag == 1
-### # run the simulation
+#
+# run the simulation
+#
 run             1000
-#### ```
+```
+----------
 
 ## Restart, fix_modify, output, run start/stop, minimize info
 
