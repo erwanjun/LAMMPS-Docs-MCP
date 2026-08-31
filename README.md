@@ -229,6 +229,7 @@ LAMMPS-Docs-MCP/
 │   ├── fetch-lammps-docs-api.ts  # Alternative: fetch via GitHub API
 │   ├── process-docs.ts       # RST → Markdown converter
 │   └── rst-converter.ts      # Custom RST parser
+├── eval/                      # Retrieval benchmark: 100 labeled queries + harness
 ├── package.json
 ├── tsconfig.json
 └── LICENSE
@@ -239,6 +240,33 @@ LAMMPS-Docs-MCP/
 1. **Documentation Pipeline**: LAMMPS RST docs → Markdown with frontmatter → chunked by headings → TF-IDF indexed
 2. **Search**: Queries are tokenized and matched against the TF-IDF index (60% weight) + keyword matching (40% weight) for hybrid scoring
 3. **MCP Protocol**: The server exposes tools, resources, and prompt templates via the [Model Context Protocol](https://modelcontextprotocol.io) over stdio
+
+## Retrieval Quality
+
+Search quality is measured against a labeled benchmark of 100 real LAMMPS queries in
+[`eval/`](eval/README.md), each annotated with the documentation page that answers it.
+
+| method | Recall@1 | Recall@5 | MRR | mean latency |
+|---|---|---|---|---|
+| keyword only | 11.0% | 54.0% | 0.274 | 58 ms |
+| TF-IDF only | 49.0% | 77.0% | 0.615 | 24 ms |
+| **hybrid 60/40 (shipping)** | **49.0%** | **87.0%** | **0.636** | **80 ms** |
+| Qdrant sparse + local rerank | 49.0% | 88.0% | 0.639 | 3 ms |
+
+The keyword signal does not improve the top result, but it lifts Recall@5 by 10 points by
+rescuing pages TF-IDF ranks 6th–15th — the band that decides whether a client calling with
+`top_k: 5` sees the right page. An alpha sweep confirms the 60/40 split sits on a flat
+optimum. An optional [Qdrant](https://qdrant.tech) backend reproduces the same ranking
+from a vector database, which matters only if the knowledge base outgrows a linear scan.
+
+```bash
+npm run eval            # keyword vs TF-IDF vs the 60/40 hybrid
+npm run eval:sweep      # + sweep the blend weight
+npm run eval:qdrant-up  # start a local Qdrant, then:
+npm run eval:qdrant     # + the optional vector-database backend
+```
+
+Full methodology, per-slice breakdowns, and known failure modes: [`eval/README.md`](eval/README.md).
 
 ## License
 

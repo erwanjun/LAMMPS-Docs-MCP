@@ -1,0 +1,2 @@
+# Per-run outcome dumps are large and reproducible; keep only latest.md in git.
+run-*.json

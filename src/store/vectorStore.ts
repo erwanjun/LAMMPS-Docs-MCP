@@ -44,7 +44,7 @@ const INDEX_FILENAME = "tfidf_index.json";
  * Keyword match score — checks how many query terms appear in the chunk
  * Uses word boundary matching to avoid false positives (e.g., "run" matching "running")
  */
-function keywordScore(queryTokens: string[], chunk: Chunk): number {
+export function keywordScore(queryTokens: string[], chunk: Chunk): number {
   const searchText = [
     chunk.content,
     chunk.docTitle,
@@ -80,11 +80,25 @@ function keywordScore(queryTokens: string[], chunk: Chunk): number {
   return commandMatch ? Math.min(baseScore * 1.5, 1.0) : baseScore;
 }
 
+/** Relative weights of the two scoring signals. Ships as 60% TF-IDF / 40% keyword. */
+export interface SearchWeights {
+  tfidf: number;
+  keyword: number;
+}
+
+export const DEFAULT_WEIGHTS: SearchWeights = { tfidf: 0.6, keyword: 0.4 };
+
 export class VectorStore {
   private indexPath: string;
   private chunks: IndexedChunk[] = [];
   private model: TfIdfModel | null = null;
   private loaded = false;
+  /**
+   * Lazily built Map form of every chunk vector; only used when useVectorCache
+   * is set. Keyed by chunk object, not chunk id: 55 ids in the current index
+   * are shared by more than one chunk (headings that slugify identically).
+   */
+  private vectorCache: Map<IndexedChunk, Map<number, number>> | null = null;
 
   constructor(dataDir: string) {
     this.indexPath = path.join(dataDir, INDEX_FILENAME);
@@ -189,6 +203,13 @@ export class VectorStore {
       category?: string;
       tags?: string[];
       minScore?: number;
+      /** Override the 60/40 TF-IDF/keyword blend. A zero weight skips that signal entirely. */
+      weights?: SearchWeights;
+      /**
+       * Reuse a prebuilt Map for each chunk vector instead of rebuilding one per query.
+       * Off by default so the shipping search path stays byte-for-byte unchanged.
+       */
+      useVectorCache?: boolean;
     }
   ): SearchResult[] {
     if (!this.loaded || !this.model) {
@@ -196,8 +217,16 @@ export class VectorStore {
     }
 
     const minScore = options?.minScore ?? 0.1;
+    const weights = options?.weights ?? DEFAULT_WEIGHTS;
+    const useTfidf = weights.tfidf !== 0;
+    const useKeyword = weights.keyword !== 0;
     const queryTokens = tokenize(queryText);
     const queryVector = toTfIdfVector(queryTokens, this.model);
+
+    if (options?.useVectorCache && !this.vectorCache) {
+      this.vectorCache = new Map(this.chunks.map((c) => [c, new Map(c.vector)]));
+    }
+    const cache = options?.useVectorCache ? this.vectorCache : null;
 
     let candidates = this.chunks;
 
@@ -218,12 +247,14 @@ export class VectorStore {
 
     // Score all candidates
     const scored: SearchResult[] = candidates.map((chunk) => {
-      const chunkVector = new Map(chunk.vector);
-      const tfidfScore = sparseCosine(queryVector, chunkVector);
-      const kwScore = keywordScore(queryTokens, chunk);
+      let tfidfScore = 0;
+      if (useTfidf) {
+        const chunkVector = cache?.get(chunk) ?? new Map(chunk.vector);
+        tfidfScore = sparseCosine(queryVector, chunkVector);
+      }
+      const kwScore = useKeyword ? keywordScore(queryTokens, chunk) : 0;
 
-      // Hybrid: 60% TF-IDF + 40% keyword
-      const hybridScore = 0.6 * tfidfScore + 0.4 * kwScore;
+      const hybridScore = weights.tfidf * tfidfScore + weights.keyword * kwScore;
 
       return {
         chunk: {
@@ -304,6 +335,25 @@ export class VectorStore {
   listCategories(): string[] {
     if (!this.loaded) throw new Error("Index not loaded");
     return [...new Set(this.chunks.map((c) => c.category))].sort();
+  }
+
+  /** Raw indexed chunks, including tokens and sparse vectors. Used by the eval harness. */
+  getIndexedChunks(): readonly IndexedChunk[] {
+    if (!this.loaded) throw new Error("Index not loaded");
+    return this.chunks;
+  }
+
+  /** The fitted TF-IDF model, for vectorizing queries outside of search(). */
+  getModel(): TfIdfModel {
+    if (!this.model) throw new Error("Index not loaded");
+    return this.model;
+  }
+
+  /** Tokenize + vectorize a query with this index's model. */
+  vectorizeQuery(queryText: string): { tokens: string[]; vector: Map<number, number> } {
+    if (!this.model) throw new Error("Index not loaded");
+    const tokens = tokenize(queryText);
+    return { tokens, vector: toTfIdfVector(tokens, this.model) };
   }
 
   get chunkCount(): number {
