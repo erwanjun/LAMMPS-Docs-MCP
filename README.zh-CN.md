@@ -234,6 +234,7 @@ LAMMPS-Docs-MCP/
 │   ├── fetch-lammps-docs-api.ts  # 备选：通过 GitHub API 获取
 │   ├── process-docs.ts       # RST → Markdown 转换器
 │   └── rst-converter.ts      # 自定义 RST 解析器
+├── eval/                      # 检索评测：100 条标注查询 + 评测框架
 ├── package.json
 ├── tsconfig.json
 └── LICENSE
@@ -244,6 +245,31 @@ LAMMPS-Docs-MCP/
 1. **文档管线**：LAMMPS RST 文档 → 带前置元数据的 Markdown → 按标题分块 → TF-IDF 索引
 2. **搜索**：查询被分词后与 TF-IDF 索引匹配（60% 权重）+ 关键词匹配（40% 权重），混合评分
 3. **MCP 协议**：服务器通过 [Model Context Protocol](https://modelcontextprotocol.io) 以 stdio 方式暴露工具、资源和提示模板
+
+## 检索质量评测
+
+检索效果通过 [`eval/`](eval/README.md) 中的标注基准集衡量：100 条真实 LAMMPS 查询，每条标注了能回答它的文档页面。
+
+| 方案 | Recall@1 | Recall@5 | MRR | 平均延迟 |
+|---|---|---|---|---|
+| 纯关键词 | 11.0% | 54.0% | 0.274 | 58 ms |
+| 纯 TF-IDF | 49.0% | 77.0% | 0.615 | 24 ms |
+| **混合 60/40（当前方案）** | **49.0%** | **87.0%** | **0.636** | **80 ms** |
+| Qdrant 稀疏检索 + 本地重排 | 49.0% | 88.0% | 0.639 | 3 ms |
+
+关键词信号并没有提升首位命中率，但它把 Recall@5 拉高了 10 个百分点——它救回的是 TF-IDF 排在
+6~15 位的页面，而这一区间恰好决定了 `top_k: 5` 的客户端能否看到正确文档。权重扫描证实 60/40
+这个切分点位于一段平坦的最优区间内。可选的 [Qdrant](https://qdrant.tech) 后端能从向量数据库
+复现同样的排序结果——只有当知识库规模超出线性扫描的承受范围时才需要它。
+
+```bash
+npm run eval            # 纯关键词 vs 纯 TF-IDF vs 60/40 混合
+npm run eval:sweep      # + 扫描混合权重
+npm run eval:qdrant-up  # 启动本地 Qdrant，然后：
+npm run eval:qdrant     # + 可选的向量数据库后端
+```
+
+完整方法论、分类指标拆解与已知失败模式见 [`eval/README.md`](eval/README.md)。
 
 ## 许可证
 

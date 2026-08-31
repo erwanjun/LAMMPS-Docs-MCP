@@ -1,0 +1,100 @@
+{"id":"q001","query":"how do I run an NVT simulation at 300 K","gold":["fix-nh"],"type":"nl-task","difficulty":"easy"}
+{"id":"q002","query":"fix npt syntax for isotropic pressure coupling","gold":["fix-nh"],"type":"command","difficulty":"easy"}
+{"id":"q003","query":"difference between fix nve and fix nvt time integration","gold":["fix-nh","fix-nve"],"type":"concept","difficulty":"medium"}
+{"id":"q004","query":"langevin thermostat damping parameter units","gold":["fix-langevin"],"type":"param","difficulty":"easy"}
+{"id":"q005","query":"which thermostat should I use for equilibration","gold":["howto-thermostat"],"type":"concept","difficulty":"hard"}
+{"id":"q006","query":"berendsen thermostat command","gold":["fix-temp-berendsen"],"type":"command","difficulty":"easy"}
+{"id":"q007","query":"rescale velocities every N steps to hold temperature","gold":["fix-temp-rescale"],"type":"nl-task","difficulty":"medium"}
+{"id":"q008","query":"how to apply a barostat and relax the box pressure","gold":["howto-barostat","fix-nh"],"type":"concept","difficulty":"medium"}
+{"id":"q009","query":"relax cell shape at zero pressure during minimization","gold":["fix-box-relax"],"type":"nl-task","difficulty":"medium"}
+{"id":"q010","query":"constrain hydrogen bond lengths so I can use a 2 fs timestep","gold":["fix-shake"],"type":"nl-task","difficulty":"hard"}
+{"id":"q011","query":"compute radial distribution function g of r","gold":["compute-rdf"],"type":"nl-task","difficulty":"easy"}
+{"id":"q012","query":"mean squared displacement to get a diffusion coefficient","gold":["compute-msd","howto-diffusion"],"type":"nl-task","difficulty":"medium"}
+{"id":"q013","query":"velocity autocorrelation function","gold":["compute-vacf"],"type":"nl-task","difficulty":"easy"}
+{"id":"q014","query":"green-kubo thermal conductivity calculation","gold":["howto-kappa"],"type":"concept","difficulty":"medium"}
+{"id":"q015","query":"muller-plathe reverse nemd for shear viscosity","gold":["fix-viscosity","howto-viscosity"],"type":"concept","difficulty":"medium"}
+{"id":"q016","query":"heat flux for thermal transport","gold":["compute-heat-flux"],"type":"nl-task","difficulty":"medium"}
+{"id":"q017","query":"pppm accuracy setting for long range coulomb","gold":["kspace-style"],"type":"param","difficulty":"easy"}
+{"id":"q018","query":"lennard jones cutoff pair style with coulomb","gold":["pair-lj-cut-coul","pair-lj"],"type":"nl-task","difficulty":"medium"}
+{"id":"q019","query":"embedded atom method potential for metals","gold":["pair-eam"],"type":"nl-task","difficulty":"easy"}
+{"id":"q020","query":"tersoff potential for silicon","gold":["pair-tersoff"],"type":"command","difficulty":"easy"}
+{"id":"q021","query":"reaxff charge equilibration fix","gold":["fix-qeq-reaxff"],"type":"command","difficulty":"medium"}
+{"id":"q022","query":"machine learning interatomic potential snap","gold":["pair-snap"],"type":"command","difficulty":"easy"}
+{"id":"q023","query":"combine two different potentials in one simulation","gold":["pair-hybrid"],"type":"nl-task","difficulty":"medium"}
+{"id":"q024","query":"tabulated pair potential read from a file","gold":["pair-table"],"type":"nl-task","difficulty":"easy"}
+{"id":"q025","query":"buckingham potential coefficients","gold":["pair-buck"],"type":"command","difficulty":"easy"}
+{"id":"q026","query":"how are epsilon and sigma mixed between atom types","gold":["pair-modify"],"type":"concept","difficulty":"medium"}
+{"id":"q027","query":"what is the difference between real and metal units","gold":["units"],"type":"concept","difficulty":"easy"}
+{"id":"q028","query":"periodic in x and y but fixed in z boundary","gold":["boundary"],"type":"nl-task","difficulty":"easy"}
+{"id":"q029","query":"read a data file with atom coordinates and topology","gold":["read-data"],"type":"nl-task","difficulty":"easy"}
+{"id":"q030","query":"render snapshot images while the simulation runs","gold":["dump-image"],"type":"nl-task","difficulty":"medium"}
+{"id":"q031","query":"dump custom per atom coordinates every 1000 steps","gold":["dump"],"type":"command","difficulty":"easy"}
+{"id":"q032","query":"compress or gzip dump output files","gold":["dump-modify"],"type":"nl-task","difficulty":"medium"}
+{"id":"q033","query":"continue a simulation from a restart file","gold":["read-restart","howto-restart"],"type":"nl-task","difficulty":"easy"}
+{"id":"q034","query":"write restart files periodically during a run","gold":["restart"],"type":"nl-task","difficulty":"easy"}
+{"id":"q035","query":"neighbor list skin distance and rebuild frequency","gold":["neighbor","neigh-modify"],"type":"param","difficulty":"medium"}
+{"id":"q036","query":"balance the load across mpi ranks","gold":["balance","fix-balance"],"type":"nl-task","difficulty":"medium"}
+{"id":"q037","query":"energy minimization with conjugate gradient","gold":["minimize","min-style"],"type":"nl-task","difficulty":"easy"}
+{"id":"q038","query":"nudged elastic band to find a transition state","gold":["neb"],"type":"concept","difficulty":"medium"}
+{"id":"q039","query":"grand canonical monte carlo insertion of molecules","gold":["fix-gcmc"],"type":"concept","difficulty":"easy"}
+{"id":"q040","query":"insert new particles into the box during a run","gold":["fix-deposit","fix-pour"],"type":"nl-task","difficulty":"medium"}
+{"id":"q041","query":"treat a group of atoms as a single rigid body","gold":["fix-rigid"],"type":"nl-task","difficulty":"easy"}
+{"id":"q042","query":"granular hertzian contact model with friction","gold":["pair-granular"],"type":"nl-task","difficulty":"medium"}
+{"id":"q043","query":"how to set up a two dimensional simulation","gold":["howto-2d","fix-enforce2d"],"type":"concept","difficulty":"medium"}
+{"id":"q044","query":"average a per atom quantity over slabs in z","gold":["fix-ave-chunk","compute-chunk-atom"],"type":"nl-task","difficulty":"hard"}
+{"id":"q045","query":"time average thermo quantities and print to a file","gold":["fix-ave-time"],"type":"nl-task","difficulty":"medium"}
+{"id":"q046","query":"tip4p water model setup","gold":["howto-tip4p"],"type":"concept","difficulty":"easy"}
+{"id":"q047","query":"spc e water force field parameters","gold":["howto-spc"],"type":"concept","difficulty":"medium"}
+{"id":"q048","query":"drude oscillator polarizable force field","gold":["howto-drude","fix-drude"],"type":"concept","difficulty":"medium"}
+{"id":"q049","query":"define a loop variable and use it in an input script","gold":["variable"],"type":"nl-task","difficulty":"medium"}
+{"id":"q050","query":"jump back to a label to make a loop","gold":["jump","label"],"type":"nl-task","difficulty":"medium"}
+{"id":"q051","query":"run lammps from a python script","gold":["python-run","howto-python"],"type":"nl-task","difficulty":"medium"}
+{"id":"q052","query":"ERROR Bond atoms missing","gold":["errors-messages","errors-common"],"type":"error","difficulty":"hard"}
+{"id":"q053","query":"lost atoms warning what does it mean","gold":["errors-warnings","errors-common"],"type":"error","difficulty":"hard"}
+{"id":"q054","query":"my simulation blew up with atoms flying apart","gold":["errors-common"],"type":"error","difficulty":"hard"}
+{"id":"q055","query":"run lammps on gpu with the kokkos package","gold":["speed-kokkos","speed-gpu"],"type":"build","difficulty":"medium"}
+{"id":"q056","query":"openmp threading to speed up a run","gold":["speed-omp"],"type":"build","difficulty":"medium"}
+{"id":"q057","query":"build lammps with cmake and enable extra packages","gold":["build-cmake","build-package"],"type":"build","difficulty":"medium"}
+{"id":"q058","query":"install lammps on macos","gold":["install-mac"],"type":"build","difficulty":"easy"}
+{"id":"q059","query":"per atom stress tensor output","gold":["compute-stress-atom"],"type":"nl-task","difficulty":"easy"}
+{"id":"q060","query":"centrosymmetry parameter to find dislocations","gold":["compute-centro-atom"],"type":"nl-task","difficulty":"easy"}
+{"id":"q061","query":"common neighbor analysis to identify crystal structure","gold":["compute-cna-atom"],"type":"nl-task","difficulty":"easy"}
+{"id":"q062","query":"voronoi volume of each atom","gold":["compute-voronoi-atom"],"type":"nl-task","difficulty":"easy"}
+{"id":"q063","query":"coordination number within a cutoff","gold":["compute-coord-atom"],"type":"nl-task","difficulty":"easy"}
+{"id":"q064","query":"interaction energy between two groups of atoms","gold":["compute-group-group"],"type":"nl-task","difficulty":"medium"}
+{"id":"q065","query":"create an fcc lattice block of atoms","gold":["lattice","create-atoms"],"type":"nl-task","difficulty":"easy"}
+{"id":"q066","query":"define a spherical region of atoms","gold":["region"],"type":"nl-task","difficulty":"easy"}
+{"id":"q067","query":"delete atoms inside a region","gold":["delete-atoms"],"type":"command","difficulty":"easy"}
+{"id":"q068","query":"exclude 1-2 1-3 1-4 pairwise interactions in a molecule","gold":["special-bonds"],"type":"concept","difficulty":"medium"}
+{"id":"q069","query":"harmonic bond style coefficients","gold":["bond-harmonic"],"type":"command","difficulty":"easy"}
+{"id":"q070","query":"fene bond for coarse grained polymer beads","gold":["bond-fene"],"type":"nl-task","difficulty":"easy"}
+{"id":"q071","query":"opls dihedral style","gold":["dihedral-opls"],"type":"command","difficulty":"easy"}
+{"id":"q072","query":"define a molecule template for insertion","gold":["molecule"],"type":"nl-task","difficulty":"medium"}
+{"id":"q073","query":"break and form bonds during a chemical reaction","gold":["fix-bond-react"],"type":"nl-task","difficulty":"medium"}
+{"id":"q074","query":"create bonds between nearby atoms after setup","gold":["create-bonds","fix-bond-create"],"type":"nl-task","difficulty":"medium"}
+{"id":"q075","query":"nanoindentation with a spherical indenter","gold":["fix-indent"],"type":"nl-task","difficulty":"medium"}
+{"id":"q076","query":"reflective wall at a plane","gold":["fix-wall-reflect"],"type":"nl-task","difficulty":"easy"}
+{"id":"q077","query":"apply a constant external force to a group","gold":["fix-addforce"],"type":"nl-task","difficulty":"easy"}
+{"id":"q078","query":"zero the forces on frozen atoms","gold":["fix-setforce","fix-freeze"],"type":"nl-task","difficulty":"medium"}
+{"id":"q079","query":"tether an atom to a point with a spring","gold":["fix-spring","fix-spring-self"],"type":"nl-task","difficulty":"medium"}
+{"id":"q080","query":"apply a uniform electric field to charged atoms","gold":["fix-efield"],"type":"nl-task","difficulty":"easy"}
+{"id":"q081","query":"two temperature model for electronic stopping","gold":["fix-ttm"],"type":"concept","difficulty":"medium"}
+{"id":"q082","query":"shear the box with sllod for non equilibrium md","gold":["fix-nvt-sllod","howto-nemd"],"type":"concept","difficulty":"hard"}
+{"id":"q083","query":"deform the simulation box during a run to apply strain","gold":["fix-deform"],"type":"nl-task","difficulty":"easy"}
+{"id":"q084","query":"remove center of mass drift","gold":["fix-momentum","fix-recenter"],"type":"nl-task","difficulty":"medium"}
+{"id":"q085","query":"stop a run early when a condition is met","gold":["fix-halt"],"type":"nl-task","difficulty":"medium"}
+{"id":"q086","query":"custom thermo output columns","gold":["thermo-style"],"type":"nl-task","difficulty":"easy"}
+{"id":"q087","query":"how often thermodynamic info is printed","gold":["thermo"],"type":"param","difficulty":"medium"}
+{"id":"q088","query":"set the md timestep size","gold":["timestep"],"type":"command","difficulty":"easy"}
+{"id":"q089","query":"assign initial velocities from a maxwell boltzmann distribution","gold":["velocity"],"type":"nl-task","difficulty":"easy"}
+{"id":"q090","query":"define a group of atoms by type or region","gold":["group"],"type":"command","difficulty":"easy"}
+{"id":"q091","query":"replica exchange parallel tempering","gold":["temper","howto-replica"],"type":"concept","difficulty":"medium"}
+{"id":"q092","query":"free energy perturbation by scaling pair coefficients","gold":["fix-adapt","compute-fep"],"type":"concept","difficulty":"hard"}
+{"id":"q093","query":"calculate elastic constants of a crystal","gold":["howto-elastic"],"type":"concept","difficulty":"medium"}
+{"id":"q094","query":"non orthogonal triclinic simulation box","gold":["howto-triclinic"],"type":"concept","difficulty":"medium"}
+{"id":"q095","query":"couple lammps to another code as a library","gold":["howto-couple","howto-library"],"type":"concept","difficulty":"medium"}
+{"id":"q096","query":"peridynamics for fracture modeling","gold":["pair-peri","howto-peri"],"type":"concept","difficulty":"medium"}
+{"id":"q097","query":"gay berne ellipsoidal particles integration","gold":["pair-gayberne","fix-nve-asphere"],"type":"nl-task","difficulty":"hard"}
+{"id":"q098","query":"spin dynamics for magnetic materials","gold":["howto-spins","fix-nve-spin"],"type":"concept","difficulty":"medium"}
+{"id":"q099","query":"change the box size or boundary after setup","gold":["change-box"],"type":"nl-task","difficulty":"medium"}
+{"id":"q100","query":"store the initial coordinates of atoms for later use","gold":["fix-store-state"],"type":"nl-task","difficulty":"hard"}
