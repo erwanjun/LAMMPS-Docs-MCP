@@ -106,7 +106,8 @@ pair_coeff ${atom1} ${atom2} 1.0 1.0
 ```lammps
 labelmap atom 1 C 2 H
 pair_coeff $(label2type(atom,C)) $(label2type(atom,H)) 80.0 1.2
-### ```
+```
+----------
 
 ## Commands that can use label types
 

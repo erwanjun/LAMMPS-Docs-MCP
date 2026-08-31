@@ -125,7 +125,8 @@ variable    a loop 5
   variable    b delete
 next        a
 jump        SELF loopa
-### ```
+```
+----------
 
 The Boolean expressions for the if and elif keywords have a C-like
 syntax.  Note that each expression is a single argument within the if

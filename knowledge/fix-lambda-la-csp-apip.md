@@ -119,7 +119,8 @@ fix lambda_la all lambda/la/csp/apip 0.24 1.5 11.0 12.0 bcc
 pair_style hybrid/overlay eam/fs/apip pace/apip
 pair_coeff * * eam/fs/apip W.eam.fs W
 pair_coeff * * pace/apip W.yace W
-### ```
+```
+----------
 
 ## Restart, fix_modify, output, run start/stop, minimize info
 

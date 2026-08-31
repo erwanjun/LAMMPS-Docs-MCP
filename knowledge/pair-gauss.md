@@ -150,7 +150,8 @@ heading) the following commands could be included in an input script:
 compute gauss all pair gauss
 variable occ equal c_gauss[1]
 thermo_style custom step temp epair v_occ
-### ```
+```
+----------
 
 ## Restrictions
 

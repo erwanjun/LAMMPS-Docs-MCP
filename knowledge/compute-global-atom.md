@@ -117,7 +117,8 @@ compute cc1 all chunk/atom molecule
 compute com all com/chunk cc1
 compute 1 all global/atom c_cc1 c_com[1] c_com[2] c_com[3]
 compute 1 all global/atom c_cc1 c_com[*]
-### ```
+```
+----------
 
 This section explains the *index* parameter.  Note that it must
 reference per-atom values, as contrasted with the *input* values, which

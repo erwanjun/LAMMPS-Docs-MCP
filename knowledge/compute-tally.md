@@ -121,7 +121,8 @@ variable press_ft equal c_rforce_ft/(ly*lz)
 #
 compute rforce_hfvt all reduce sum c_hflow_hfvt[1]
 variable press_hfvt equal c_rforce_hfvt/(ly*lz)
-### ```
+```
+----------
 
 The pairwise contributions are computing via a callback that the
 compute registers with the non-bonded pairwise force computation.

@@ -266,7 +266,8 @@ H, you would use the following pair_coeff command:
 
 ```lammps
 pair_coeff * * ffield.reax C C N H
-### ```
+```
+-------------
 
 ## Control file
 

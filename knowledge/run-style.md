@@ -292,7 +292,8 @@ seem to work well:
 ```lammps
 timestep  36.0
 run_style respa 3 3 4 inner 1 3.0 4.0 middle 2 6.0 7.0 outer 3
-### ```
+```
+----------
 
 The *respa/omp* style is a variant of *respa* adapted for use with
 pair, bond, angle, dihedral, improper, or kspace styles with an *omp*

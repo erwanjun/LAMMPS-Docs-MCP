@@ -89,7 +89,8 @@ array with 3 columns:
 compute prop all property/atom vx vy vz
 compute 10 all reduce/chunk mychunk max c_prop[*]
 compute 10 all reduce/chunk mychunk max c_prop[1] c_prop[2] c_prop[3]
-### ```
+```
+----------
 
 Here is an example of using this compute, in conjunction with the
 compute chunk/spread/atom command to identify self-assembled micelles.

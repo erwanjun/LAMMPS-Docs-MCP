@@ -224,7 +224,8 @@ fix myprops all property/atom i_flag1 d_flag2
 compute 1 all property/atom i_flag1 d_flag2
 fix 1 all ave/atom 10 10 100 c_1[1] c_1[2]
 dump 1 all custom 100 tmp.dump id x y z i_flag1 d_flag2 f_1[1] f_1[2]
-### ```
+```
+----------
 
 If you wish to add new [pair styles](pair_style), [fixes](fix), or [computes](compute) that use the per-atom properties
 defined by this fix, see the [Modify atom](Modify_atom) doc page
@@ -270,7 +271,8 @@ water:
 group hwat id 2:300:3
 group hwat id 3:300:3
 set group hwat mass 2.0141018
-### ```
+```
+----------
 
 ----------
 

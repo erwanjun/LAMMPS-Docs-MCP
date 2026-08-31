@@ -478,7 +478,8 @@ virial, so this contribution is not included.
 
 ```lammps
 kspace_style none
-### ```
+```
+----------
 
 
 **(Darden)** Darden, York, Pedersen, J Chem Phys, 98, 10089 (1993).

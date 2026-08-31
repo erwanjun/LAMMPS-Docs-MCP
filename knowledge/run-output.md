@@ -48,7 +48,8 @@ Ave neighs/atom = 353.30339
 Ave special neighs/atom = 2.3403194
 Neighbor list builds = 26
 Dangerous builds = 0
-## ```
+```
+----------
 
 The first section provides a global loop timing summary. The *loop time*
 is the total wall-clock time for the MD steps of the simulation run,
@@ -107,7 +108,8 @@ Bond    \| 0.0043139  \| 0.0046779  \| 0.0050418  \|   0.5 \|  0.68
 Kspace  \| 0.070572   \| 0.074541   \| 0.07851    \|   1.5 \| 10.89
 Neigh   \| 0.084778   \| 0.086969   \| 0.089161   \|   0.7 \| 12.70
 Reduce  \| 0.0036485  \| 0.003737   \| 0.0038254  \|   0.1 \|  0.55
-## ```
+```
+----------
 
 The third section above lists the number of owned atoms (Nlocal),
 ghost atoms (Nghost), and pairwise neighbors stored per processor.
@@ -187,7 +189,7 @@ in communication, roughly 75% in the example above.
 Depending on the error function arguments when it is called in the
 source code, there will be one to four lines of error output.
 
-### A single line
+## A single line
 
 The line starts with "ERROR: ", followed by the error message and
 information about the location in the source where the error function
@@ -197,7 +199,7 @@ src/fix_print.cpp). Example:
 ```
 ERROR: Fix print timestep variable nevery returned a bad timestep: 9900 (src/fix_print.cpp:131)
 ```
-### Two lines
+## Two lines
 
 In addition to the single line output, also the last line of the input
 will be repeated.  If a command is spread over multiple lines in the
@@ -209,7 +211,7 @@ compressed to single blanks.  Example:
 ERROR: Unrecognized fix style 'printf' (src/modify.cpp:924)
 Last input line: fix 0 all printf v_nevery "Step: $(step) ${step}"
 ```
-### Three lines
+## Three lines
 
 In addition to the two line output from above, a third line is added
 that uses caret character markers '^' to indicate which "word" in the
@@ -220,7 +222,7 @@ ERROR: Illegal fix print nevery value -100; must be > 0 (src/fix_print.cpp:41)
 Last input line: fix 0 all print -100 "Step: $(step) ${stepx}"
                                  ^^^^
 ```
-### Four lines
+## Four lines
 
 The three line output is expanded to four lines, if the the input is
 modified through input pre-processing, e.g. when substituting

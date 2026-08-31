@@ -478,7 +478,8 @@ x Pstart Pstop Pdamp
 y Pstart Pstop Pdamp
 z Pstart Pstop Pdamp
 couple none
-### ```
+```
+----------
 
 The keyword/value option pairs are used in the following ways.
 

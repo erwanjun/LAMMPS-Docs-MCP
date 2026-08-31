@@ -175,7 +175,8 @@ temp/chunk calculation to a file is to use the
 compute cc1 all chunk/atom molecule
 compute myChunk all temp/chunk cc1 temp
 fix 1 all ave/time 100 1 100 c_myChunk[1] file tmp.out mode vector
-### ```
+```
+----------
 
 The keyword/value option pairs are used in the following ways.
 

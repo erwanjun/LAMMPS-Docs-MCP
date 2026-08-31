@@ -72,24 +72,50 @@ export function extractRstTitle(rst: string): string | null {
 
 const UNDERLINE_CHARS = ["=", "-", "~", "^", '"', "*", "#"];
 
+/** A line made up entirely of RST underline characters carries no title text. */
+const PUNCT_ONLY = /^[=\-~^"*#]+$/;
+
+/** Opening or closing line of a fenced code block, as emitted by processDirectives(). */
+const FENCE = /^\s*```/;
+
 function convertHeadings(md: string): string {
   const lines = md.split("\n");
   const result: string[] = [];
   const headingCharOrder: string[] = [];
 
   let i = 0;
+  let inFence = false;
   while (i < lines.length) {
     const line = lines[i];
     const trimmed = line.trim();
+
+    // processDirectives() runs first, so by this point the text already contains
+    // fenced code blocks. Their contents are verbatim and must not be reinterpreted:
+    // a LAMMPS input script is full of lines that look like RST underlines, and the
+    // closing fence itself was being consumed as a title.
+    if (FENCE.test(line)) {
+      inFence = !inFence;
+      result.push(line);
+      i++;
+      continue;
+    }
+    if (inFence) {
+      result.push(line);
+      i++;
+      continue;
+    }
 
     // Check for overline + title + underline pattern
     if (
       i + 2 < lines.length &&
       trimmed.length > 0 &&
-      /^[=\-~^"*#]+$/.test(trimmed) &&
+      PUNCT_ONLY.test(trimmed) &&
       lines[i + 1].trim().length > 0 &&
+      // The title itself must be real text. Three consecutive punctuation lines
+      // (common in converted style-index pages) otherwise become "## *".
+      !PUNCT_ONLY.test(lines[i + 1].trim()) &&
       lines[i + 2].trim().length > 0 &&
-      /^[=\-~^"*#]+$/.test(lines[i + 2].trim()) &&
+      PUNCT_ONLY.test(lines[i + 2].trim()) &&
       trimmed[0] === lines[i + 2].trim()[0]
     ) {
       const titleText = lines[i + 1].trim();
@@ -106,12 +132,12 @@ function convertHeadings(md: string): string {
       trimmed.length > 0 &&
       !trimmed.startsWith("..") &&
       !trimmed.startsWith("#") &&
-      !/^[=\-~^"*#]+$/.test(trimmed)
+      !PUNCT_ONLY.test(trimmed)
     ) {
       const nextTrimmed = (lines[i + 1] || "").trim();
       if (
         nextTrimmed.length > 0 &&
-        /^[=\-~^"*#]+$/.test(nextTrimmed) &&
+        PUNCT_ONLY.test(nextTrimmed) &&
         nextTrimmed.length >= trimmed.length - 2
       ) {
         const underlineChar = nextTrimmed[0];

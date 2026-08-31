@@ -104,7 +104,8 @@ a simulation where something goes wrong at step 1163:
 ```lammps
 variable       s equal stride(1100,1200,1)
 restart        v_s tmp.restart
-### ```
+```
+----------
 
 See the [read_restart](read_restart) command for information about
 what is stored in a restart file.

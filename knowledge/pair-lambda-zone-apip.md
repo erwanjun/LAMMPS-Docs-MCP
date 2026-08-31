@@ -61,7 +61,8 @@ pair_coeff * * pace/precise/apip Cu_precise.yace Cu
 pair_coeff * * lambda/input/csp/apip
 pair_coeff * * lambda/zone/apip
 fix 2 all lambda/apip 3.0 3.5 time_averaged_zone 4.0 12.0 110 110 min_delta_lambda 0.01
-### ```
+```
+----------
 
 ## Mixing, shift, table, tail correction, restart, rRESPA info
 

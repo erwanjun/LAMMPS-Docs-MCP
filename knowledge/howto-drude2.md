@@ -122,7 +122,8 @@ Masses
 3 15.999 # OH
 4 1.008  # HA
 5 1.008  # HO
-## ```
+```
+----------
 
 **Basic input file**
 
@@ -248,7 +249,8 @@ using *thermo_style custom* with respectively *c_TDRUDE[1]* and
 
 ```lammps
 thermo_style custom step temp c_TDRUDE[1] c_TDRUDE[2]
-## ```
+```
+----------
 
 **Thole screening**
 
@@ -411,7 +413,8 @@ NPT simulation with TGNH thermostat
 comm_modify vel yes
 fix TGNPT all tgnpt/drude temp 300. 300. 100 1. 20 iso 1. 1. 500
 thermo_style custom f_TGNPT[1] f_TGNPT[2] f_TGNPT[3]
-## ```
+```
+----------
 
 **Rigid bodies**
 
@@ -454,7 +457,8 @@ fix RIGID ATOMS rigid/npt/small molecule temp 300. 300. 100 iso 1. 1. 500
 fix_modify RIGID temp TATOM press thermo_press
 fix NVT DRUDES nvt temp 1. 1. 20
 fix INVERSE all drude/transform/inverse
-## ```
+```
+----------
 
 
 **(Lamoureux and Roux)** Lamoureux and Roux, J Chem Phys, 119, 3025-3039 (2003)

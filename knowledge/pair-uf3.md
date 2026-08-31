@@ -112,7 +112,8 @@ COEFF_MATRIX[1][1][K]
 COEFF_MATRIX[1][2][K]
 .
 .
-### .
+.
+#
 ```
 The second line indicates whether the block contains data for 2-body
 (`2B`) or 3-body (`3B`) interaction. This is followed by element

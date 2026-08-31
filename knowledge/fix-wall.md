@@ -418,7 +418,8 @@ perturbation on the particles:
 
 ```
 position = c0 + A (1 - cos(omega\*delta))
-### ```
+```
+----------
 
 ----------
 

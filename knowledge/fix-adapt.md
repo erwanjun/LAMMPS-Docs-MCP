@@ -326,7 +326,8 @@ linear fashion over the course of a simulation:
 ```lammps
 variable prefactor equal ramp(10,30)
 fix 1 all adapt 1 pair soft a * * v_prefactor
-### ```
+```
+----------
 
 The *bond* keyword uses the specified variable to change the value of
 a bond coefficient over time, very similar to how the *pair* keyword
@@ -566,7 +567,8 @@ over the course of a 1000-step simulation:
 ```lammps
 variable size equal ramp(1.0,0.1)
 fix 1 center adapt 10 atom diameter v_size
-### ```
+```
+----------
 
 This fix can be used in long simulations which are restarted one or
 more times to continuously adapt simulation parameters, but it must be

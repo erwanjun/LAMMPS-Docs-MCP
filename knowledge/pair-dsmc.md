@@ -96,7 +96,8 @@ as in the following:
 
 ```lammps
 velocity all create 594.6 87287 loop geom dist gaussian
-### ```
+```
+----------
 
 ## Mixing, shift, table, tail correction, restart, rRESPA info
 

@@ -174,7 +174,8 @@ these 7 keywords:
 
 ```
 x Ptarget y Ptarget z Ptarget xy 0.0 yz 0.0 xz 0.0 couple none
-### ```
+```
+----------
 
 The *vmax* keyword can be used to limit the fractional change in the
 volume of the simulation box that can occur in one iteration of the

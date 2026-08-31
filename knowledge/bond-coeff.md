@@ -63,7 +63,8 @@ corresponds to the first example above would be listed as
 
 ```
 5 80.0 1.2
-### ```
+```
+----------
 
 The list of all bond styles defined in LAMMPS is given on the
 [bond_style](bond_style) doc page.  They are also listed in more

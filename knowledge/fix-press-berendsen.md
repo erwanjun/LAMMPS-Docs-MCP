@@ -159,7 +159,8 @@ x Pstart Pstop Pdamp
 y Pstart Pstop Pdamp
 z Pstart Pstop Pdamp
 couple none
-### ```
+```
+----------
 
 This fix computes a temperature and pressure each timestep.  To do
 this, the fix creates its own computes of style "temp" and "pressure",

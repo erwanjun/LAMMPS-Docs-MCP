@@ -367,7 +367,8 @@ lambda, length units
 n_ion, ions/volume units
 surface_movement: 0 to disable tracking of surface motion, 1 to enable
 T_e_min, temperature units
-### ```
+```
+----------
 
 **Additional details for fix ttm/thermal**
 

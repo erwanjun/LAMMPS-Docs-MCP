@@ -122,7 +122,8 @@ compute myPress all stress/atom NULL
 compute 2 all reduce min c_myPress[*]
 compute 2 all reduce min c_myPress[1] c_myPress[2] c_myPress[3] &
                          c_myPress[4] c_myPress[5] c_myPress[6]
-### ```
+```
+----------
 
 The atom attribute values (*x*, *y*, *z*, *vx*, *vy*, *vz*, *fx*,
 *fy*, and *fz*) are self-explanatory.  Note that other atom attributes

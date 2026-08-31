@@ -150,7 +150,8 @@ which are detailed in [fix nvt](fix_nh).
 
 ```lammps
 fix 1 all nvt temp 300.0 300.0 $(100.0*dt) 1.0 $(20.0*dt)
-### ```
+```
+----------
 
 The barostat parameters for fix style *tgnpt/drude* is specified
 using one or more of the *iso*, *aniso*, *tri*, *x*, *y*, *z*, *xy*,

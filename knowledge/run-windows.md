@@ -60,7 +60,8 @@ with MPI using something like:
 ```bash
 mpiexec -localonly 2 lmp -in in.lj.lmp -pk omp 2 -sf omp
 mpiexec -localonly 2 lmp -in in.lj.lmp -kokkos on t 2 -sf kk
-## ```
+```
+-------------
 
 MPI parallelization will work for *all* functionality in LAMMPS and in
 many cases the MPI parallelization is more efficient than

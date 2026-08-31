@@ -124,7 +124,8 @@ PROGRAM testlib2
   CALL lmp%close(.TRUE.)
   DEALLOCATE(command_args)
 END PROGRAM testlib2
-## ```
+```
+--------------------
 
 # Executing LAMMPS commands
 
@@ -169,7 +170,8 @@ PROGRAM testcmd
   CALL lmp%commands_string(cmds)
   CALL lmp%close(.TRUE.)
 END PROGRAM testcmd
-## ```
+```
+---------------
 
 # Accessing system properties
 
@@ -242,7 +244,8 @@ PROGRAM testprop
 
   CALL lmp%close(.TRUE.)
 END PROGRAM testprop
-## ```
+```
+---------------
 
 # The :f`LIBLAMMPS` module API
 
@@ -251,7 +254,7 @@ of the contents of the :f`LIBLAMMPS` Fortran interface to LAMMPS.
 
 --------
 
-### Procedures Bound to the :f`lammps` Derived Type
+## Procedures Bound to the :f`lammps` Derived Type
 
 --------
 

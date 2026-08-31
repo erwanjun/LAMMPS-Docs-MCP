@@ -165,7 +165,8 @@ ave/grid commands would be equivalent:
 compute myFFT all fft/grid 10 10 10 ...
 fix 1 all ave/grid 100 1 100 10 10 10 c_myFFT:grid:data[*]
 fix 2 all ave/grid 100 1 100 10 10 10 c_myFFT:grid:data[*][1] c_myFFT:grid:data[*][2] c_myFFT:grid:data[3]
-### ```
+```
+----------
 
 *Per-atom mode*:
 

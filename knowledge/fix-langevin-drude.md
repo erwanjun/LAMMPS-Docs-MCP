@@ -154,7 +154,8 @@ specify the Drude status of each atom type.
 
 ```lammps
 comm_modify vel yes
-### ```
+```
+----------
 
 *Tcom* is the target temperature of the centers of mass, which would
 be used to thermostat the non-polarizable atoms.  *Tdrude* is the

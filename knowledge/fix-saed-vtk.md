@@ -64,7 +64,8 @@ values, e.g.
 ```lammps
 compute 3 top saed 0.0251 Al O
 fix saed/vtk 1 1 1 c_3 file Al2O3_001.saed
-### ```
+```
+----------
 
 The *Nevery*, *Nrepeat*, and *Nfreq* arguments specify on what
 timesteps the input values will be used in order to contribute to the

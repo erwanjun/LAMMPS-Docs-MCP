@@ -96,7 +96,8 @@ make role_check    # check for misformatted role keywords
 
 make link_check    # check for broken external URLs
 make spelling      # spell-check the manual
-## ```
+```
+----------
 
 ## Build using CMake
 
@@ -113,7 +114,8 @@ environment variable.
 
 ```bash
 -D BUILD_DOC=value       # yes or no (default)
-## ```
+```
+----------
 
 ## Prerequisites for HTML
 

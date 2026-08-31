@@ -236,7 +236,8 @@ xy 0.0 0.0 Pdamp
 yz 0.0 0.0 Pdamp
 xz 0.0 0.0 Pdamp
 couple none
-### ```
+```
+----------
 
 In some cases (e.g. for solids) the pressure (volume) and/or
 temperature of the system can oscillate undesirably when a Nose/Hoover
